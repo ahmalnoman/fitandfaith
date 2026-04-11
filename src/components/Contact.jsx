@@ -44,7 +44,7 @@ export default function Contact() {
           <p className="text-brand-muted text-lg mb-10">{t.sub[lang]}</p>
 
           <a
-            href="https://wa.me/qr/YL74SQL3NHBYO1"
+            href="https://wa.me/message/SYHAEEMXHMMSA1"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold px-10 py-5 rounded-full text-lg transition-all duration-300 shadow-2xl hover:shadow-green-500/30 hover:scale-105 mb-6"

@@ -23,7 +23,7 @@ export default function Footer() {
             Instagram
           </a>
           <a
-            href="https://wa.me/qr/YL74SQL3NHBYO1"
+            href="https://wa.me/message/SYHAEEMXHMMSA1"
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand-muted hover:text-brand-white text-xs transition-colors"

@@ -48,7 +48,7 @@ export default function Navbar() {
             {t.toggleLang[lang]}
           </button>
           <a
-            href="https://wa.me/qr/YL74SQL3NHBYO1"
+            href="https://wa.me/message/SYHAEEMXHMMSA1"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand-gold hover:bg-brand-goldHov text-brand-bg text-sm font-semibold px-5 py-2 rounded-full transition-all duration-200 shadow-lg hover:shadow-yellow-700/30"
@@ -86,7 +86,7 @@ export default function Navbar() {
             {t.toggleLang[lang]}
           </button>
           <a
-            href="https://wa.me/qr/YL74SQL3NHBYO1"
+            href="https://wa.me/message/SYHAEEMXHMMSA1"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand-gold text-white text-center font-semibold px-5 py-3 rounded-full mt-2"

@@ -57,7 +57,7 @@ export default function ServiceCard({ service, index }) {
 
       {/* CTA */}
       <a
-        href="https://wa.me/qr/YL74SQL3NHBYO1"
+        href="https://wa.me/message/SYHAEEMXHMMSA1"
         target="_blank"
         rel="noopener noreferrer"
         className={`w-full text-center py-3 rounded-full font-semibold text-sm transition-all duration-200 ${
