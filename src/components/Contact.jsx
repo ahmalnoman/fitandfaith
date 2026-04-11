@@ -1,6 +1,25 @@
 // src/components/Contact.jsx
 import { motion } from 'framer-motion';
-import { MessageCircle, Instagram } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
+
+function InstagramIcon({ className }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 import { useLang } from '../context/LanguageContext';
 import { content } from '../content/content';
 
@@ -42,7 +61,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-brand-muted hover:text-brand-white transition-colors duration-200 text-sm font-medium"
           >
-            <Instagram className="w-4 h-4" />
+            <InstagramIcon className="w-4 h-4" />
             {t.instagram[lang]}
           </a>
         </motion.div>
