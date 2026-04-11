@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #080808;
+  color: #F0EDE8;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body[dir="rtl"] {
+  font-family: 'Cairo', sans-serif;
+}
+
+::selection {
+  background-color: #C9A96E;
+  color: #080808;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #101010;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #C9A96E, #D0D0D0);
+  border-radius: 3px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #C9A96E 0%, #D0D0D0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-gold {
+  box-shadow: 0 0 40px rgba(201, 169, 110, 0.3);
+}
+
+.border-gradient {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #C9A96E, #D0D0D0);
+  z-index: -1;
+}
