@@ -1,0 +1,101 @@
+export const content = {
+  nav: {
+    home:       { en: 'Home',              ar: 'الرئيسية'   },
+    services:   { en: 'Services',          ar: 'الخدمات'    },
+    contact:    { en: 'Contact',           ar: 'تواصل معنا' },
+    toggleLang: { en: 'عربي',             ar: 'English'     },
+  },
+
+  hero: {
+    badge:    { en: 'Premium Fitness Coaching', ar: 'تدريب لياقة احترافي' },
+    heading1: { en: 'TRAIN HARD.',              ar: 'تدرّب بقوة.'          },
+    heading2: { en: 'LIVE RIGHT.',              ar: 'عش بصدق.'             },
+    sub: {
+      en: 'Online coaching, in-person training, and nutrition plans — built around your life.',
+      ar: 'تدريب أونلاين، جلسات مباشرة، وخطط تغذية — مصممة خصيصاً لحياتك.',
+    },
+    cta1: { en: 'Start Your Journey', ar: 'ابدأ رحلتك'      },
+    cta2: { en: 'See Services',       ar: 'اكتشف الخدمات'  },
+  },
+
+  stats: [
+    { value: '200+', label: { en: 'Clients Coached', ar: 'عميل تم تدريبه' } },
+    { value: '5★',   label: { en: 'Average Rating',  ar: 'متوسط التقييم'  } },
+    { value: '3',    label: { en: 'Core Programs',   ar: 'برامج أساسية'   } },
+    { value: '24/7', label: { en: 'Support',          ar: 'دعم مستمر'      } },
+  ],
+
+  services: {
+    heading: { en: 'What I Offer', ar: 'ماذا أقدّم' },
+    sub: {
+      en: 'Choose the program that fits your lifestyle.',
+      ar: 'اختر البرنامج الذي يناسب أسلوب حياتك.',
+    },
+    items: [
+      {
+        icon: 'Monitor',
+        title: { en: 'Online Coaching',    ar: 'تدريب أونلاين' },
+        desc: {
+          en: 'Personalised training plans delivered to your phone. Weekly check-ins, form feedback, and full accountability — wherever you are.',
+          ar: 'خطط تدريب مخصصة على هاتفك. متابعة أسبوعية ومراجعة الأداء والمحاسبة الكاملة — أينما كنت.',
+        },
+        features: {
+          en: ['Custom workout plan', 'Weekly check-ins', 'Video form reviews', 'WhatsApp support'],
+          ar: ['خطة تمرين مخصصة', 'متابعة أسبوعية', 'مراجعة فيديو الأداء', 'دعم واتساب'],
+        },
+        cta:       { en: 'Get Started',    ar: 'ابدأ الآن'      },
+        badge:     { en: 'Most Popular',   ar: 'الأكثر طلباً'   },
+        highlight: true,
+      },
+      {
+        icon: 'Dumbbell',
+        title: { en: 'In-Person Training', ar: 'تدريب مباشر' },
+        desc: {
+          en: 'Face-to-face sessions with full coaching support. Perfect for those who want hands-on guidance and real-time corrections.',
+          ar: 'جلسات وجهاً لوجه مع دعم تدريبي كامل. مثالي لمن يريد توجيهاً مباشراً وتصحيحاً فورياً.',
+        },
+        features: {
+          en: ['1-on-1 sessions', 'Real-time corrections', 'Progress tracking', 'Flexible scheduling'],
+          ar: ['جلسات فردية', 'تصحيح فوري', 'متابعة التقدم', 'جدول مرن'],
+        },
+        cta:       { en: 'Book a Session', ar: 'احجز جلسة' },
+        highlight: false,
+      },
+      {
+        icon: 'Salad',
+        title: { en: 'Nutrition Plans',    ar: 'خطط التغذية' },
+        desc: {
+          en: 'Eat smarter, not less. Custom meal plans tailored to your goals, preferences, and lifestyle — no fad diets.',
+          ar: 'كل بذكاء، لا بقلة. خطط غذائية مخصصة وفق أهدافك وتفضيلاتك وأسلوب حياتك — بلا حميات مبالغ فيها.',
+        },
+        features: {
+          en: ['Custom meal plan', 'Macro breakdown', 'Weekly adjustments', 'Recipe suggestions'],
+          ar: ['خطة وجبات مخصصة', 'توزيع المغذيات', 'تعديلات أسبوعية', 'اقتراحات وصفات'],
+        },
+        cta:       { en: 'Get My Plan',    ar: 'احصل على خطتي' },
+        highlight: false,
+      },
+    ],
+  },
+
+  contact: {
+    heading: { en: 'Ready to Start?',        ar: 'مستعد للبدء؟'          },
+    sub: {
+      en: "Send me a message on WhatsApp and let's build your plan together.",
+      ar: 'أرسل لي رسالة على واتساب ونبني خطتك معاً.',
+    },
+    whatsapp:  { en: 'Chat on WhatsApp',     ar: 'تواصل على واتساب'     },
+    instagram: { en: 'Follow on Instagram',  ar: 'تابعني على إنستغرام'  },
+    note: {
+      en: 'I typically respond within a few hours.',
+      ar: 'أرد عادةً خلال ساعات قليلة.',
+    },
+  },
+
+  footer: {
+    rights: {
+      en: 'All rights reserved.',
+      ar: 'جميع الحقوق محفوظة.',
+    },
+  },
+};
