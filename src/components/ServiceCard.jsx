@@ -1,5 +1,6 @@
 // src/components/ServiceCard.jsx
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Monitor, Dumbbell, Salad, CheckCircle2, Zap } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
@@ -11,6 +12,7 @@ const PERIODS = ['monthly', 'quarterly', 'annually'];
 
 export default function ServiceCard({ service, index }) {
   const { lang } = useLang();
+  const navigate = useNavigate();
   const Icon = iconMap[service.icon];
   const t = content.pricing;
   const [activePeriod, setActivePeriod] = useState('monthly');
@@ -150,18 +152,16 @@ export default function ServiceCard({ service, index }) {
         </ul>
 
         {/* CTA */}
-        <a
-          href="https://wa.me/message/SYHAEEMXHMMSA1"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`w-full text-center py-3.5 rounded-full font-bold text-sm transition-all duration-300 ${
+        <button
+          onClick={() => navigate('/payment')}
+          className={`w-full text-center py-3.5 rounded-full font-bold text-sm transition-all duration-300 cursor-pointer ${
             service.highlight
               ? 'btn-shimmer text-brand-bg shadow-lg hover:shadow-yellow-700/40 hover:scale-[1.02]'
               : 'border border-[#2a2a2a] hover:border-brand-gold/50 text-brand-light hover:text-brand-gold bg-[#111] hover:bg-[#161616]'
           }`}
         >
           {service.cta[lang]}
-        </a>
+        </button>
       </div>
     </motion.div>
   );

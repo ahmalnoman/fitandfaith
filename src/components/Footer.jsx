@@ -1,4 +1,5 @@
 // src/components/Footer.jsx
+import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { content } from '../content/content';
 import logo from '../assets/logo.png';
@@ -14,6 +15,12 @@ export default function Footer() {
           © {new Date().getFullYear()} Fit and Faith — {content.footer.rights[lang]}
         </p>
         <div className="flex gap-4">
+          <Link
+            to="/privacy"
+            className="text-brand-muted hover:text-brand-white text-xs transition-colors"
+          >
+            {lang === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
+          </Link>
           <a
             href="https://www.instagram.com/fitandfaitht"
             target="_blank"

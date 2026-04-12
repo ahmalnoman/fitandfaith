@@ -1,14 +1,30 @@
 // src/components/Navbar.jsx
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { content } from '../content/content';
 import logo from '../assets/logo.png';
 
 export default function Navbar() {
   const { lang, toggle } = useLang();
+  const navigate = useNavigate();
+  const location = useLocation();
   const t = content.nav;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleNavClick = (key) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(key);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById(key);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -35,19 +51,24 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <img src={logo} alt="Fit and Faith Logo" className="h-10 w-auto" />
+        <img
+          src={logo}
+          alt="Fit and Faith Logo"
+          className="h-10 w-auto cursor-pointer"
+          onClick={() => navigate('/')}
+        />
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-8">
           {['home', 'services', 'contact'].map((key) => (
-            <a
+            <button
               key={key}
-              href={`#${key === 'services' ? 'services' : key}`}
-              className="text-brand-muted hover:text-brand-white transition-colors duration-200 text-xs font-semibold tracking-widest uppercase relative group"
+              onClick={() => handleNavClick(key)}
+              className="text-brand-muted hover:text-brand-white transition-colors duration-200 text-xs font-semibold tracking-widest uppercase relative group cursor-pointer"
             >
               {t[key][lang]}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold transition-all duration-300 group-hover:w-full" />
-            </a>
+            </button>
           ))}
         </div>
 
@@ -93,14 +114,13 @@ export default function Navbar() {
           }}
         >
           {['home', 'services', 'contact'].map((key) => (
-            <a
+            <button
               key={key}
-              href={`#${key}`}
-              onClick={() => setMenuOpen(false)}
-              className="text-brand-light text-base font-medium tracking-wide hover:text-brand-gold transition-colors"
+              onClick={() => { setMenuOpen(false); handleNavClick(key); }}
+              className="text-brand-light text-base font-medium tracking-wide hover:text-brand-gold transition-colors text-left cursor-pointer"
             >
               {t[key][lang]}
-            </a>
+            </button>
           ))}
           <button onClick={toggle} className="text-brand-gold font-semibold text-left mt-1 text-sm">
             {t.toggleLang[lang]}

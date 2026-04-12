@@ -117,6 +117,28 @@ export const content = {
     },
   },
 
+  support: {
+    badge:        { en: 'Support',                        ar: 'الدعم'                         },
+    heading:      { en: 'Support the Mission',            ar: 'ادعم الرسالة'                   },
+    sub: {
+      en: 'Your contribution helps us grow and reach more people with fitness and faith.',
+      ar: 'مساهمتك تساعدنا على النمو والوصول إلى المزيد من الناس باللياقة والإيمان.',
+    },
+    qrLabel:      { en: 'Scan to Pay — JaiB Wallet',      ar: 'امسح للدفع — محفظة JaiB'        },
+    qrNote: {
+      en: 'Scan this QR code with your JaiB app to send directly to the wallet.',
+      ar: 'امسح رمز QR بتطبيق JaiB للإرسال مباشرة إلى المحفظة.',
+    },
+    detailsLabel: { en: 'Receiver Details',               ar: 'بيانات المستلم'                 },
+    nameLabel:    { en: 'Full Name',                      ar: 'الاسم الكامل'                   },
+    walletLabel:  { en: 'Wallet / Phone Number',          ar: 'رقم المحفظة / الهاتف'           },
+    methodsLabel: { en: 'Accepted Transfer Methods',      ar: 'طرق التحويل المقبولة'           },
+    securityNote: {
+      en: 'All transfers are received through a verified JaiB wallet. Western Union and MoneyGram international wires are accepted using the details above.',
+      ar: 'جميع التحويلات تصل عبر محفظة JaiB موثقة. يتم قبول الحوالات الدولية عبر ويسترن يونيون وموني جرام باستخدام البيانات أعلاه.',
+    },
+  },
+
   footer: {
     rights: {
       en: 'All rights reserved.',
