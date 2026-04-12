@@ -142,7 +142,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <a
-            href={`https://wa.me/967734003222?text=${encodeURIComponent(lang === 'ar' ? 'مرحباً، أريد أن أبدأ رحلتي مع Fit & Faith!' : 'Hi, I want to start my journey with Fit & Faith!')}`}
+            href={`https://wa.me/967773031599?text=${encodeURIComponent(lang === 'ar' ? 'مرحباً، أريد أن أبدأ رحلتي مع Fit & Faith!' : 'Hi, I want to start my journey with Fit & Faith!')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-shimmer text-brand-bg font-bold px-10 py-4 rounded-full text-base transition-all duration-300 shadow-2xl hover:shadow-yellow-700/50 hover:scale-105"

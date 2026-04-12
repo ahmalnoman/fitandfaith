@@ -24,7 +24,7 @@ function InstagramIcon({ className }) {
   );
 }
 
-const WHATSAPP_NUMBER = '967734003222';
+const WHATSAPP_NUMBER = '967773031599';
 
 export default function Contact() {
   const { lang } = useLang();
