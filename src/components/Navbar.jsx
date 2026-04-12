@@ -82,7 +82,7 @@ export default function Navbar() {
             {t.toggleLang[lang]}
           </button>
           <a
-            href="https://wa.me/message/SYHAEEMXHMMSA1"
+            href={`https://wa.me/967734003222?text=${encodeURIComponent(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات Fit & Faith.' : 'Hi, I\'d like to inquire about Fit & Faith services.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-shimmer text-brand-bg text-xs font-bold px-5 py-2.5 rounded-full transition-all duration-200 shadow-lg hover:shadow-yellow-700/30 hover:scale-105"
@@ -126,7 +126,7 @@ export default function Navbar() {
             {t.toggleLang[lang]}
           </button>
           <a
-            href="https://wa.me/message/SYHAEEMXHMMSA1"
+            href={`https://wa.me/967734003222?text=${encodeURIComponent(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات Fit & Faith.' : 'Hi, I\'d like to inquire about Fit & Faith services.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-shimmer text-brand-bg text-center font-bold px-5 py-3 rounded-full mt-2 text-sm"

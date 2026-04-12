@@ -30,7 +30,7 @@ export default function Footer() {
             Instagram
           </a>
           <a
-            href="https://wa.me/message/SYHAEEMXHMMSA1"
+            href={`https://wa.me/967734003222?text=${encodeURIComponent(lang === 'ar' ? 'مرحباً!' : 'Hi!')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand-muted hover:text-brand-white text-xs transition-colors"

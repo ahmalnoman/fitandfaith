@@ -130,7 +130,7 @@ export default function PrivacyPolicy() {
               : 'If you have any questions about this policy, contact us:'}
           </p>
           <a
-            href="https://wa.me/message/SYHAEEMXHMMSA1"
+            href={`https://wa.me/967734003222?text=${encodeURIComponent(isAr ? 'مرحباً، لدي سؤال حول سياسة الخصوصية.' : 'Hi, I have a question about the privacy policy.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[#25D366] hover:text-[#1abe5a] text-sm font-semibold transition-colors"

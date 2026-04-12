@@ -66,7 +66,7 @@ export default function PaymentPage() {
               </p>
 
               <a
-                href="https://wa.me/message/SYHAEEMXHMMSA1"
+                href={`https://wa.me/967734003222?text=${encodeURIComponent(lang === 'ar' ? 'مرحباً، لدي سؤال حول الدفع.' : 'Hi, I have a question about payment.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105"
