@@ -144,7 +144,7 @@ export default function Support() {
                     {t.nameLabel[lang]}
                   </span>
                   <div className="flex items-center justify-between">
-                    <span className="text-brand-white text-sm font-medium tracking-wide">
+                    <span className="text-brand-white text-sm font-medium tracking-wide" dir="ltr">
                       Mohammed Amer Mohammed Noman
                     </span>
                     <CopyButton text="Mohammed Amer Mohammed Noman" />
@@ -157,7 +157,7 @@ export default function Support() {
                     {t.walletLabel[lang]}
                   </span>
                   <div className="flex items-center justify-between">
-                    <span className="text-brand-white text-sm font-mono font-medium">
+                    <span className="text-brand-white text-sm font-mono font-medium" dir="ltr">
                       +967 734003222
                     </span>
                     <CopyButton text="+967734003222" />
