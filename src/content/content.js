@@ -1,7 +1,7 @@
 export const content = {
   nav: {
     home:       { en: 'Home',              ar: 'الرئيسية'   },
-    services:   { en: 'Services',          ar: 'الخدمات'    },
+    services:   { en: 'Programs',          ar: 'البرامج'    },
     contact:    { en: 'Contact',           ar: 'تواصل معنا' },
     toggleLang: { en: 'عربي',             ar: 'English'     },
   },
@@ -15,7 +15,7 @@ export const content = {
       ar: 'تدريب أونلاين، جلسات مباشرة، وخطط تغذية — مصممة خصيصاً لحياتك.',
     },
     cta1: { en: 'Start Your Journey', ar: 'ابدأ رحلتك'      },
-    cta2: { en: 'See Services',       ar: 'اكتشف الخدمات'  },
+    cta2: { en: 'See Programs',       ar: 'اكتشف البرامج'  },
   },
 
   stats: [
@@ -25,11 +25,21 @@ export const content = {
     { value: '24/7', label: { en: 'Support',          ar: 'دعم مستمر'      } },
   ],
 
+  pricing: {
+    monthly:   { en: 'Monthly',    ar: 'شهري'        },
+    quarterly: { en: 'Quarterly',  ar: 'ربع سنوي'    },
+    annually:  { en: 'Annually',   ar: 'سنوي'        },
+    save:      { en: 'Save',       ar: 'وفر'         },
+    perMonth:  { en: '/mo',        ar: '/شهر'        },
+    billedQ:   { en: 'billed every 3 months', ar: 'يُفوتر كل 3 أشهر' },
+    billedA:   { en: 'billed once a year',    ar: 'يُفوتر مرة سنوياً' },
+  },
+
   services: {
-    heading: { en: 'What I Offer', ar: 'ماذا أقدّم' },
+    heading: { en: 'Choose Your Program', ar: 'اختر برنامجك' },
     sub: {
-      en: 'Choose the program that fits your lifestyle.',
-      ar: 'اختر البرنامج الذي يناسب أسلوب حياتك.',
+      en: 'Flexible plans designed to fit your goals, schedule, and budget.',
+      ar: 'خطط مرنة مصممة لتناسب أهدافك وجدولك وميزانيتك.',
     },
     items: [
       {
@@ -42,6 +52,11 @@ export const content = {
         features: {
           en: ['Custom workout plan', 'Weekly check-ins', 'Video form reviews', 'WhatsApp support'],
           ar: ['خطة تمرين مخصصة', 'متابعة أسبوعية', 'مراجعة فيديو الأداء', 'دعم واتساب'],
+        },
+        pricing: {
+          monthly:   { price: 79,  billed: null,  savings: null },
+          quarterly: { price: 65,  billed: 195,   savings: 18   },
+          annually:  { price: 55,  billed: 660,   savings: 30   },
         },
         cta:       { en: 'Get Started',    ar: 'ابدأ الآن'      },
         badge:     { en: 'Most Popular',   ar: 'الأكثر طلباً'   },
@@ -58,6 +73,11 @@ export const content = {
           en: ['1-on-1 sessions', 'Real-time corrections', 'Progress tracking', 'Flexible scheduling'],
           ar: ['جلسات فردية', 'تصحيح فوري', 'متابعة التقدم', 'جدول مرن'],
         },
+        pricing: {
+          monthly:   { price: 149, billed: null,  savings: null },
+          quarterly: { price: 119, billed: 357,   savings: 20   },
+          annually:  { price: 99,  billed: 1188,  savings: 34   },
+        },
         cta:       { en: 'Book a Session', ar: 'احجز جلسة' },
         highlight: false,
       },
@@ -71,6 +91,11 @@ export const content = {
         features: {
           en: ['Custom meal plan', 'Macro breakdown', 'Weekly adjustments', 'Recipe suggestions'],
           ar: ['خطة وجبات مخصصة', 'توزيع المغذيات', 'تعديلات أسبوعية', 'اقتراحات وصفات'],
+        },
+        pricing: {
+          monthly:   { price: 49, billed: null, savings: null },
+          quarterly: { price: 39, billed: 117,  savings: 20   },
+          annually:  { price: 29, billed: 348,  savings: 41   },
         },
         cta:       { en: 'Get My Plan',    ar: 'احصل على خطتي' },
         highlight: false,
