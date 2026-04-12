@@ -1,11 +1,34 @@
 // src/components/Hero.jsx
 import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 import { useLang } from '../context/LanguageContext';
 import { content } from '../content/content';
 
 export default function Hero() {
   const { lang } = useLang();
   const t = content.hero;
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    // Force muted (some mobile browsers need this set via JS)
+    v.muted = true;
+    // Explicitly trigger play for iOS/Android
+    const tryPlay = () => {
+      v.play().catch(() => {
+        // If autoplay still blocked, retry on first user interaction
+        const resume = () => {
+          v.play();
+          document.removeEventListener('touchstart', resume);
+          document.removeEventListener('scroll', resume);
+        };
+        document.addEventListener('touchstart', resume, { once: true });
+        document.addEventListener('scroll', resume, { once: true });
+      });
+    };
+    tryPlay();
+  }, []);
 
   return (
     <section
@@ -15,10 +38,12 @@ export default function Hero() {
       {/* ── Fullscreen video background ── */}
       <div className="absolute inset-0">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          webkit-playsinline=""
           preload="auto"
           src="/hero-bg.mp4"
           className="absolute inset-0 w-full h-full object-cover"
