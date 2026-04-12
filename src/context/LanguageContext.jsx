@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = useState('ar');
   const isAr = lang === 'ar';
 
   useEffect(() => {
