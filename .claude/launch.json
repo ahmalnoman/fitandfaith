@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "banner-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "5199", "/Users/kaiizneglap-0011/Desktop/Fitandfaith/banner-preview"],
+      "port": 5199
+    },
+    {
+      "name": "dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--port", "5173"],
+      "port": 5173
+    }
+  ]
+}
