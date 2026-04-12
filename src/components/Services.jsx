@@ -62,7 +62,7 @@ export default function Services() {
           transition={{ delay: 0.5 }}
           className="text-center text-brand-muted text-xs mt-10 tracking-wide"
         >
-          All prices in USD · Cancel anytime · No hidden fees
+          {lang === 'ar' ? 'جميع الأسعار بالدولار · إلغاء في أي وقت · بدون رسوم مخفية' : 'All prices in USD · Cancel anytime · No hidden fees'}
         </motion.p>
       </div>
     </section>

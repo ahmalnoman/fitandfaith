@@ -82,7 +82,7 @@ export default function Contact() {
           {/* Section label */}
           <div className="inline-flex items-center gap-2 border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-8">
             <span className="w-1 h-1 rounded-full bg-brand-gold" />
-            Contact
+            {isAr ? 'تواصل معنا' : 'Contact'}
           </div>
 
           <h2 className="text-4xl md:text-6xl font-black text-brand-white mb-5">
