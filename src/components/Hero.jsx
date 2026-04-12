@@ -166,7 +166,7 @@ export default function Hero() {
         transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
       >
-        <span className="text-brand-muted text-[10px] tracking-widest uppercase">scroll</span>
+        <span className="text-brand-muted text-[10px] tracking-widest uppercase">{lang === 'ar' ? 'مرر للأسفل' : 'scroll'}</span>
         <span className="block w-px h-10 bg-gradient-to-b from-brand-muted/60 to-transparent" />
       </motion.div>
     </section>

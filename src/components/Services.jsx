@@ -25,7 +25,7 @@ export default function Services() {
             className="inline-flex items-center gap-2 border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6"
           >
             <span className="w-1 h-1 rounded-full bg-brand-gold" />
-            Programs
+            {lang === 'ar' ? 'البرامج' : 'Programs'}
           </motion.div>
 
           <motion.h2
