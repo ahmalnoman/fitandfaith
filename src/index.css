@@ -200,6 +200,35 @@ body[dir="rtl"] {
   text-shadow: 0 0 30px rgba(201, 169, 110, 0.5);
 }
 
+/* ── Transformation cards: dimmed → colorful on hover ── */
+.transformation-img {
+  filter: grayscale(100%) brightness(0.6) contrast(1.05);
+  transform: scale(1);
+}
+.transformation-card:hover .transformation-img--primary {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  transform: scale(1.03);
+}
+/* Two-image cards: secondary image reveals in full color on hover */
+.transformation-card:hover .transformation-img--secondary {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  opacity: 1;
+  transform: scale(1.03);
+}
+/* When the card has a secondary image, hide primary on hover so the swap is clean */
+.transformation-card:has(.transformation-img--secondary):hover .transformation-img--primary {
+  opacity: 0;
+}
+/* Touch devices: no hover — show full color by default */
+@media (hover: none) {
+  .transformation-img {
+    filter: none;
+  }
+  .transformation-img--secondary {
+    display: none;
+  }
+}
+
 /* ── Hero video scanlines (futuristic overlay) ── */
 .hero-scanlines {
   background: repeating-linear-gradient(

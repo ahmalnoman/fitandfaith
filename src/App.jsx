@@ -4,6 +4,7 @@ import Navbar   from './components/Navbar';
 import Hero     from './components/Hero';
 import Stats    from './components/Stats';
 import Services from './components/Services';
+import Transformations from './components/Transformations';
 import Contact  from './components/Contact';
 import Footer   from './components/Footer';
 import PaymentPage from './pages/PaymentPage';
@@ -15,6 +16,7 @@ function HomePage() {
       <Hero />
       <Stats />
       <Services />
+      <Transformations />
       <Contact />
     </>
   );

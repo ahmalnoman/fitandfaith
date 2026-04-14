@@ -60,7 +60,7 @@ export default function Navbar() {
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-8">
-          {['home', 'services', 'contact'].map((key) => (
+          {['home', 'services', 'transformations', 'contact'].map((key) => (
             <button
               key={key}
               onClick={() => handleNavClick(key)}
@@ -113,7 +113,7 @@ export default function Navbar() {
             borderTop: '1px solid rgba(201,169,110,0.1)',
           }}
         >
-          {['home', 'services', 'contact'].map((key) => (
+          {['home', 'services', 'transformations', 'contact'].map((key) => (
             <button
               key={key}
               onClick={() => { setMenuOpen(false); handleNavClick(key); }}
