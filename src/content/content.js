@@ -1,9 +1,10 @@
 export const content = {
   nav: {
-    home:       { en: 'Home',              ar: 'الرئيسية'   },
-    services:   { en: 'Programs',          ar: 'البرامج'    },
-    contact:    { en: 'Contact',           ar: 'تواصل معنا' },
-    toggleLang: { en: 'عربي',             ar: 'English'     },
+    home:            { en: 'Home',            ar: 'الرئيسية'    },
+    services:        { en: 'Programs',        ar: 'البرامج'     },
+    transformations: { en: 'Transformations', ar: 'التحولات'    },
+    contact:         { en: 'Contact',         ar: 'تواصل معنا'  },
+    toggleLang:      { en: 'عربي',           ar: 'English'      },
   },
 
   hero: {
@@ -99,6 +100,33 @@ export const content = {
         },
         cta:       { en: 'Get My Plan',    ar: 'احصل على خطتي' },
         highlight: false,
+      },
+    ],
+  },
+
+  transformations: {
+    badge:   { en: 'Transformations',                   ar: 'التحولات' },
+    heading: { en: 'Real Clients. Real Results.',       ar: 'عملاء حقيقيون. نتائج حقيقية.' },
+    sub: {
+      en: 'Committed work, consistent coaching — the proof is in the progress.',
+      ar: 'التزام حقيقي ومتابعة مستمرة — النتائج تتحدث عن نفسها.',
+    },
+    durationLabel: { en: 'Duration', ar: 'المدة' },
+    items: [
+      {
+        name: { en: 'Moe',        ar: 'مو'     },
+        duration: { en: '6 months', ar: '٦ أشهر' },
+        images: ['moe'],
+      },
+      {
+        name: { en: 'Aseel',      ar: 'أسيل'   },
+        duration: { en: '8 days',  ar: '٨ أيام'  },
+        images: ['aseel-front', 'aseel-back'],
+      },
+      {
+        name: { en: 'Abdumageed', ar: 'عبدالمجيد' },
+        duration: { en: '14 days', ar: '١٤ يوماً' },
+        images: ['abdumageed-1', 'abdumageed-2'],
       },
     ],
   },
