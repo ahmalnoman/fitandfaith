@@ -114,12 +114,12 @@ export const content = {
     durationLabel: { en: 'Duration', ar: 'المدة' },
     items: [
       {
-        name: { en: 'Moe',        ar: 'مو'     },
+        name: { en: 'Mohammed',    ar: 'محمد'   },
         duration: { en: '6 months', ar: '٦ أشهر' },
         images: ['moe'],
       },
       {
-        name: { en: 'Aseel',      ar: 'أسيل'   },
+        name: { en: 'Alaseel',     ar: 'الاصيل'  },
         duration: { en: '8 days',  ar: '٨ أيام'  },
         images: ['aseel-front', 'aseel-back'],
       },
