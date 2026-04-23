@@ -70,6 +70,13 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
+          <button
+            onClick={() => navigate('/intake')}
+            className="text-brand-gold hover:text-brand-white transition-colors duration-200 text-xs font-semibold tracking-widest uppercase relative group cursor-pointer"
+          >
+            {t.intake[lang]}
+            <span className="absolute -bottom-1 left-0 w-full h-px bg-brand-gold transition-all duration-300 group-hover:bg-brand-white" />
+          </button>
         </div>
 
         {/* Right controls */}
@@ -122,6 +129,12 @@ export default function Navbar() {
               {t[key][lang]}
             </button>
           ))}
+          <button
+            onClick={() => { setMenuOpen(false); navigate('/intake'); }}
+            className="text-brand-gold text-base font-bold tracking-wide hover:text-brand-white transition-colors text-left cursor-pointer"
+          >
+            {t.intake[lang]}
+          </button>
           <button onClick={toggle} className="text-brand-gold font-semibold text-left mt-1 text-sm">
             {t.toggleLang[lang]}
           </button>

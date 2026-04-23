@@ -3,6 +3,7 @@ export const content = {
     home:            { en: 'Home',            ar: 'الرئيسية'    },
     services:        { en: 'Programs',        ar: 'البرامج'     },
     transformations: { en: 'Transformations', ar: 'التحولات'    },
+    intake:          { en: 'Start Plan',      ar: 'ابدأ خطتك'  },
     contact:         { en: 'Contact',         ar: 'تواصل معنا'  },
     toggleLang:      { en: 'عربي',           ar: 'English'      },
   },
