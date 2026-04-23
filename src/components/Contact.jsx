@@ -33,13 +33,28 @@ export default function Contact() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [consent, setConsent] = useState(false);
+  const [interestId, setInterestId] = useState(null);
+
+  const pickInterest = (item) => {
+    setInterestId(item.id);
+    setMessage(item.template[lang]);
+  };
+
+  const selectedInterest = t.interests?.find((i) => i.id === interestId);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const interestLine = selectedInterest
+      ? lang === 'ar'
+        ? `*الاهتمام:* ${selectedInterest.label.ar}`
+        : `*Interested in:* ${selectedInterest.label.en}`
+      : null;
+
     const lines = [
       lang === 'ar' ? `*الاسم:* ${name}` : `*Name:* ${name}`,
       lang === 'ar' ? `*رقم الهاتف:* ${phone}` : `*Phone:* ${phone}`,
+      ...(interestLine ? [interestLine] : []),
       '',
       message,
     ];
@@ -104,6 +119,32 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Interest quick-picker */}
+              <div>
+                <label className="text-brand-muted text-[11px] font-semibold tracking-wider uppercase block mb-2">
+                  {t.interestLabel[lang]}
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {t.interests.map((item) => {
+                    const active = interestId === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => pickInterest(item)}
+                        className={`text-xs font-semibold px-3.5 py-2 rounded-full border transition-all duration-200 cursor-pointer ${
+                          active
+                            ? 'bg-brand-gold text-brand-bg border-brand-gold shadow-lg shadow-yellow-700/30'
+                            : 'border-[#2a2a2a] text-brand-muted hover:border-brand-gold/50 hover:text-brand-light'
+                        }`}
+                      >
+                        {item.label[lang]}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Name */}
               <div>
                 <label className="text-brand-muted text-[11px] font-semibold tracking-wider uppercase block mb-2">

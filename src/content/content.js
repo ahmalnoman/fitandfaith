@@ -67,6 +67,7 @@ export const content = {
     items: [
       {
         icon: 'Monitor',
+        interestId: 'online',
         title: { en: 'Online Coaching',    ar: 'تدريب أونلاين' },
         desc: {
           en: 'Personalised training plans delivered to your phone. Weekly check-ins, form feedback, and full accountability — wherever you are.',
@@ -87,6 +88,7 @@ export const content = {
       },
       {
         icon: 'Dumbbell',
+        interestId: 'inperson',
         title: { en: 'In-Person Training', ar: 'تدريب مباشر' },
         desc: {
           en: 'Face-to-face sessions with full coaching support. Perfect for those who want hands-on guidance and real-time corrections.',
@@ -106,6 +108,7 @@ export const content = {
       },
       {
         icon: 'Salad',
+        interestId: 'nutrition',
         title: { en: 'Nutrition Plans',    ar: 'خطط التغذية' },
         desc: {
           en: 'Eat smarter, not less. Custom meal plans tailored to your goals, preferences, and lifestyle — no fad diets.',
@@ -165,6 +168,49 @@ export const content = {
       en: 'I typically respond within a few hours.',
       ar: 'أرد عادةً خلال ساعات قليلة.',
     },
+    interestLabel: { en: "What are you interested in?", ar: 'ما الذي يهمك؟' },
+    interests: [
+      {
+        id: 'online',
+        label:    { en: 'Online Coaching',    ar: 'تدريب أونلاين' },
+        template: {
+          en: "Hi! I'd like to sign up for the Online Coaching program. Can you walk me through the next steps and pricing?",
+          ar: 'مرحباً! أرغب بالاشتراك في برنامج التدريب الأونلاين. ممكن تشرح لي الخطوات والأسعار؟',
+        },
+      },
+      {
+        id: 'inperson',
+        label:    { en: 'In-Person Training', ar: 'تدريب مباشر' },
+        template: {
+          en: "Hi! I'm interested in In-Person Training sessions. What are your available times and locations?",
+          ar: 'مرحباً! أنا مهتم بجلسات التدريب المباشر. ما هي الأوقات والمواقع المتاحة؟',
+        },
+      },
+      {
+        id: 'nutrition',
+        label:    { en: 'Nutrition Plan',     ar: 'خطة تغذية'   },
+        template: {
+          en: "Hi! I'd like a custom Nutrition Plan. Can we talk about my goals and what's included?",
+          ar: 'مرحباً! أرغب بخطة تغذية مخصصة. ممكن نتحدث عن أهدافي وما الذي تشمله الخطة؟',
+        },
+      },
+      {
+        id: 'promo',
+        label:    { en: 'Claim FAITH50 Offer', ar: 'احجز عرض FAITH50' },
+        template: {
+          en: "Hi! I'd like to claim the FAITH50 launch offer (50% off). Am I still within the first 100 clients?",
+          ar: 'مرحباً! أريد الاستفادة من عرض FAITH50 (خصم 50%). هل ما زلت ضمن أول 100 عميل؟',
+        },
+      },
+      {
+        id: 'question',
+        label:    { en: 'General Question',   ar: 'سؤال عام'    },
+        template: {
+          en: 'Hi! I have a quick question about your services.',
+          ar: 'مرحباً! لدي سؤال سريع حول خدماتك.',
+        },
+      },
+    ],
   },
 
   support: {

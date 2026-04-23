@@ -180,7 +180,7 @@ export default function ServiceCard({ service, index }) {
 
         {/* CTA */}
         <button
-          onClick={() => navigate('/payment')}
+          onClick={() => navigate('/payment', { state: { interestId: service.interestId } })}
           className={`w-full text-center py-3.5 rounded-full font-bold text-sm transition-all duration-300 cursor-pointer ${
             service.highlight
               ? 'btn-shimmer text-brand-bg shadow-lg hover:shadow-yellow-700/40 hover:scale-[1.02]'

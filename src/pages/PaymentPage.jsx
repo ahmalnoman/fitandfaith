@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, MessageCircle } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 import Support from '../components/Support';
+import ConfirmStep from '../components/ConfirmStep';
 
 export default function PaymentPage() {
   const { lang } = useLang();
@@ -25,7 +26,10 @@ export default function PaymentPage() {
         </Link>
       </div>
 
-      {/* Support / Payment Details */}
+      {/* Step 1 — Confirm program via WhatsApp */}
+      <ConfirmStep />
+
+      {/* Step 2 — Support / Payment Details */}
       <Support />
 
       {/* WhatsApp Contact Section */}
