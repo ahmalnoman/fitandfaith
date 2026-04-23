@@ -10,6 +10,7 @@ import Contact  from './components/Contact';
 import Footer   from './components/Footer';
 import PaymentPage from './pages/PaymentPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import IntakePage from './pages/IntakePage';
 
 function HomePage() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/intake" element={<IntakePage />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
           </Routes>
         </main>

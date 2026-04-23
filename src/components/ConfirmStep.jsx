@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MessageCircle, CheckCircle2 } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
@@ -158,6 +158,18 @@ export default function ConfirmStep() {
                 : 'Sent your message? Scroll down for payment details.'}
             </p>
           )}
+
+          <div className="mt-6 pt-6 border-t border-white/5 flex items-center gap-3 flex-wrap">
+            <span className="text-brand-muted text-xs">
+              {isAr ? 'جاهز تملأ استبيان العميل مباشرة؟' : 'Ready to fill the intake form directly?'}
+            </span>
+            <Link
+              to="/intake"
+              className="text-xs font-bold text-brand-gold hover:text-brand-white border border-brand-gold/30 hover:border-brand-gold/60 px-3 py-1.5 rounded-full transition"
+            >
+              {content.intake.startCta[lang]} →
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
