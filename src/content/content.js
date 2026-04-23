@@ -32,8 +32,30 @@ export const content = {
     annually:  { en: 'Annually',   ar: 'سنوي'        },
     save:      { en: 'Save',       ar: 'وفر'         },
     perMonth:  { en: '/mo',        ar: '/شهر'        },
+    currency:  { en: 'YER',        ar: 'ر.ي'         },
     billedQ:   { en: 'billed every 3 months', ar: 'يُفوتر كل 3 أشهر' },
     billedA:   { en: 'billed once a year',    ar: 'يُفوتر مرة سنوياً' },
+  },
+
+  promo: {
+    code: 'FAITH50',
+    active: true,
+    discount: 50,
+    headline: {
+      en: '🔥 LAUNCH OFFER — 50% OFF FOR THE FIRST 100 CLIENTS',
+      ar: '🔥 عرض الإطلاق — خصم 50% لأول 100 عميل',
+    },
+    sub: {
+      en: 'Use code',
+      ar: 'استخدم الكود',
+    },
+    tail: {
+      en: 'at checkout. Limited spots — once they\'re gone, they\'re gone.',
+      ar: 'عند الدفع. الأماكن محدودة — بمجرد نفادها تنتهي.',
+    },
+    claim:   { en: 'Claim Offer',  ar: 'احجز عرضك' },
+    badge:   { en: '50% OFF',      ar: 'خصم 50%'   },
+    was:     { en: 'Was',          ar: 'السعر'     },
   },
 
   services: {
@@ -55,9 +77,9 @@ export const content = {
           ar: ['خطة تمرين مخصصة', 'متابعة أسبوعية', 'مراجعة فيديو الأداء', 'دعم واتساب'],
         },
         pricing: {
-          monthly:   { price: 79,  billed: null,  savings: null },
-          quarterly: { price: 65,  billed: 195,   savings: 18   },
-          annually:  { price: 55,  billed: 660,   savings: 30   },
+          monthly:   { price: 40000, billed: null,   savings: null },
+          quarterly: { price: 32500, billed: 97500,  savings: 18   },
+          annually:  { price: 27500, billed: 330000, savings: 30   },
         },
         cta:       { en: 'Get Started',    ar: 'ابدأ الآن'      },
         badge:     { en: 'Most Popular',   ar: 'الأكثر طلباً'   },
@@ -75,9 +97,9 @@ export const content = {
           ar: ['جلسات فردية', 'تصحيح فوري', 'متابعة التقدم', 'جدول مرن'],
         },
         pricing: {
-          monthly:   { price: 149, billed: null,  savings: null },
-          quarterly: { price: 119, billed: 357,   savings: 20   },
-          annually:  { price: 99,  billed: 1188,  savings: 34   },
+          monthly:   { price: 75000, billed: null,   savings: null },
+          quarterly: { price: 60000, billed: 180000, savings: 20   },
+          annually:  { price: 50000, billed: 600000, savings: 34   },
         },
         cta:       { en: 'Book a Session', ar: 'احجز جلسة' },
         highlight: false,
@@ -94,9 +116,9 @@ export const content = {
           ar: ['خطة وجبات مخصصة', 'توزيع المغذيات', 'تعديلات أسبوعية', 'اقتراحات وصفات'],
         },
         pricing: {
-          monthly:   { price: 49, billed: null, savings: null },
-          quarterly: { price: 39, billed: 117,  savings: 20   },
-          annually:  { price: 29, billed: 348,  savings: 41   },
+          monthly:   { price: 25000, billed: null,   savings: null },
+          quarterly: { price: 20000, billed: 60000,  savings: 20   },
+          annually:  { price: 15000, billed: 180000, savings: 41   },
         },
         cta:       { en: 'Get My Plan',    ar: 'احصل على خطتي' },
         highlight: false,

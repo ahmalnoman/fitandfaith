@@ -102,31 +102,58 @@ export default function ServiceCard({ service, index }) {
         </div>
 
         {/* ── Price Display ── */}
-        <div className="flex items-end gap-2 mb-1">
-          <span
-            className={`text-5xl font-black leading-none ${
-              service.highlight ? 'text-brand-gold stat-glow' : 'text-brand-white'
-            }`}
-          >
-            ${currentPricing.price}
-          </span>
-          <span className="text-brand-muted text-sm mb-1">{t.perMonth[lang]}</span>
-          {currentPricing.savings && (
-            <span className="ml-auto mb-1 text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-semibold">
-              {t.save[lang]} {currentPricing.savings}%
-            </span>
-          )}
-        </div>
+        {(() => {
+          const promo = content.promo;
+          const fmt = (n) => n.toLocaleString('en-US');
+          const discounted = promo?.active
+            ? Math.round(currentPricing.price * (1 - promo.discount / 100))
+            : currentPricing.price;
+          const discountedBilled = promo?.active && currentPricing.billed
+            ? Math.round(currentPricing.billed * (1 - promo.discount / 100))
+            : currentPricing.billed;
+          return (
+            <>
+              <div className="flex items-end gap-2 mb-1 flex-wrap">
+                <span
+                  className={`text-5xl font-black leading-none ${
+                    service.highlight ? 'text-brand-gold stat-glow' : 'text-brand-white'
+                  }`}
+                >
+                  {fmt(discounted)}
+                </span>
+                <span className="text-brand-muted text-sm mb-1">
+                  {t.currency[lang]} {t.perMonth[lang]}
+                </span>
+                {currentPricing.savings && (
+                  <span className="ml-auto mb-1 text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-semibold">
+                    {t.save[lang]} {currentPricing.savings}%
+                  </span>
+                )}
+              </div>
 
-        {/* Billing note */}
-        <p className="text-brand-muted text-xs mb-6 min-h-[16px]">
-          {activePeriod === 'quarterly' && currentPricing.billed && (
-            <>${currentPricing.billed} — {t.billedQ[lang]}</>
-          )}
-          {activePeriod === 'annually' && currentPricing.billed && (
-            <>${currentPricing.billed} — {t.billedA[lang]}</>
-          )}
-        </p>
+              {promo?.active && (
+                <div className="flex items-center gap-2 mb-1 text-xs">
+                  <span className="text-brand-muted line-through">
+                    {fmt(currentPricing.price)} {t.currency[lang]}
+                  </span>
+                  <span className="bg-red-500/15 text-red-400 border border-red-500/30 px-2 py-0.5 rounded-full font-bold tracking-wide">
+                    {promo.badge[lang]}
+                  </span>
+                </div>
+              )}
+
+              {/* Billing note */}
+              <p className="text-brand-muted text-xs mb-6 min-h-[16px]">
+                {activePeriod === 'quarterly' && currentPricing.billed && (
+                  <>{fmt(discountedBilled)} {t.currency[lang]} — {t.billedQ[lang]}</>
+                )}
+                {activePeriod === 'annually' && currentPricing.billed && (
+                  <>{fmt(discountedBilled)} {t.currency[lang]} — {t.billedA[lang]}</>
+                )}
+              </p>
+            </>
+          );
+        })()}
 
         {/* Divider */}
         <div

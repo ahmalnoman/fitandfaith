@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar   from './components/Navbar';
+import PromoBanner from './components/PromoBanner';
 import Hero     from './components/Hero';
 import Stats    from './components/Stats';
 import Services from './components/Services';
@@ -26,7 +27,10 @@ export default function App() {
   return (
     <LanguageProvider>
       <div className="bg-brand-bg min-h-screen text-brand-light overflow-x-hidden">
-        <Navbar />
+        <div className="fixed top-0 left-0 right-0 z-50">
+          <PromoBanner />
+          <Navbar />
+        </div>
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
