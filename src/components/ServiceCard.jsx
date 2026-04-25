@@ -2,11 +2,18 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Monitor, Dumbbell, Salad, CheckCircle2, Zap } from 'lucide-react';
+import {
+  Monitor, Dumbbell, Salad, CheckCircle2, Zap,
+  CalendarCheck, Video, MessageCircle, User, Activity,
+  TrendingUp, Clock, PieChart, RefreshCw, BookOpen,
+} from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 import { content } from '../content/content';
 
-const iconMap = { Monitor, Dumbbell, Salad };
+const iconMap = {
+  Monitor, Dumbbell, Salad, CalendarCheck, Video, MessageCircle,
+  User, Activity, TrendingUp, Clock, PieChart, RefreshCw, BookOpen,
+};
 
 const PERIODS = ['monthly', 'quarterly', 'annually'];
 
@@ -84,21 +91,32 @@ export default function ServiceCard({ service, index }) {
             service.highlight ? 'bg-black/40 ring-1 ring-brand-gold/20' : 'bg-[#111] ring-1 ring-[#222]'
           }`}
         >
-          {PERIODS.map((period) => (
-            <button
-              key={period}
-              onClick={() => setActivePeriod(period)}
-              className={`flex-1 py-2 transition-all duration-200 capitalize tracking-wide ${
-                activePeriod === period
-                  ? service.highlight
-                    ? 'bg-brand-gold text-brand-bg pricing-active'
-                    : 'bg-[#1f1f1f] text-brand-white'
-                  : 'text-brand-muted hover:text-brand-light'
-              }`}
-            >
-              {t[period][lang]}
-            </button>
-          ))}
+          {PERIODS.map((period) => {
+            const sv = service.pricing[period].savings;
+            const isActive = activePeriod === period;
+            return (
+              <button
+                key={period}
+                onClick={() => setActivePeriod(period)}
+                className={`flex-1 py-2 px-1 transition-all duration-200 capitalize tracking-wide leading-tight ${
+                  isActive
+                    ? service.highlight
+                      ? 'bg-brand-gold text-brand-bg pricing-active'
+                      : 'bg-[#1f1f1f] text-brand-white'
+                    : 'text-brand-muted hover:text-brand-light'
+                }`}
+              >
+                <div>{t[period][lang]}</div>
+                {sv && (
+                  <div className={`text-[10px] font-bold mt-0.5 ${
+                    isActive ? (service.highlight ? 'text-brand-bg/80' : 'text-emerald-400') : 'text-emerald-400'
+                  }`}>
+                    {t.save[lang]} {sv}%
+                  </div>
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* ── Price Display ── */}
@@ -124,11 +142,6 @@ export default function ServiceCard({ service, index }) {
                 <span className="text-brand-muted text-sm mb-1">
                   {t.currency[lang]} {t.perMonth[lang]}
                 </span>
-                {currentPricing.savings && (
-                  <span className="ml-auto mb-1 text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-semibold">
-                    {t.save[lang]} {currentPricing.savings}%
-                  </span>
-                )}
               </div>
 
               {promo?.active && (
@@ -165,17 +178,34 @@ export default function ServiceCard({ service, index }) {
         />
 
         {/* Features */}
-        <ul className="space-y-2.5 mb-8 flex-1">
-          {service.features[lang].map((f, i) => (
-            <li key={i} className="flex items-center gap-2.5 text-sm text-brand-light">
-              <CheckCircle2
-                className={`w-4 h-4 flex-shrink-0 ${
-                  service.highlight ? 'text-brand-gold' : 'text-[#3a3a3a]'
-                }`}
-              />
-              {f}
-            </li>
-          ))}
+        <p className="text-xs font-bold tracking-widest uppercase text-brand-muted mb-3">
+          {lang === 'ar' ? 'ماذا ستحصل عليه؟' : "What you'll get"}
+        </p>
+        <ul className="space-y-2 mb-8 flex-1">
+          {service.features.map((f, i) => {
+            const FIcon = iconMap[f.icon] || CheckCircle2;
+            if (f.highlight) {
+              return (
+                <li
+                  key={i}
+                  className="flex items-center gap-3 text-sm font-bold text-brand-bg rounded-lg px-3 py-2.5 bg-brand-gold ring-1 ring-brand-gold shadow-md shadow-yellow-700/20"
+                >
+                  <FIcon className="w-5 h-5 flex-shrink-0" />
+                  <span>{f[lang]}</span>
+                </li>
+              );
+            }
+            return (
+              <li key={i} className="flex items-center gap-3 text-sm text-brand-light px-3">
+                <FIcon
+                  className={`w-4 h-4 flex-shrink-0 ${
+                    service.highlight ? 'text-brand-gold/80' : 'text-brand-muted'
+                  }`}
+                />
+                {f[lang]}
+              </li>
+            );
+          })}
         </ul>
 
         {/* CTA */}

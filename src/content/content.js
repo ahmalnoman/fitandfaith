@@ -28,9 +28,9 @@ export const content = {
   ],
 
   pricing: {
-    monthly:   { en: 'Monthly',    ar: 'شهري'        },
-    quarterly: { en: 'Quarterly',  ar: 'ربع سنوي'    },
-    annually:  { en: 'Annually',   ar: 'سنوي'        },
+    monthly:   { en: '1 Month',      ar: 'شهر واحد'    },
+    quarterly: { en: '3 Months',     ar: '3 شهور'      },
+    annually:  { en: 'Full Year',    ar: 'سنة كاملة'   },
     save:      { en: 'Save',       ar: 'وفر'         },
     perMonth:  { en: '/mo',        ar: '/شهر'        },
     currency:  { en: 'YER',        ar: 'ر.ي'         },
@@ -71,13 +71,16 @@ export const content = {
         interestId: 'online',
         title: { en: 'Online Coaching',    ar: 'تدريب أونلاين' },
         desc: {
-          en: 'Personalised training plans delivered to your phone. Weekly check-ins, form feedback, and full accountability — wherever you are.',
-          ar: 'خطط تدريب مخصصة على هاتفك. متابعة أسبوعية ومراجعة الأداء والمحاسبة الكاملة — أينما كنت.',
+          en: 'Personalised training plans delivered to your phone. Weekly check-ins, form feedback, and full accountability — plus a custom nutrition plan included as a benefit, wherever you are.',
+          ar: 'خطط تدريب مخصصة على هاتفك. متابعة أسبوعية ومراجعة الأداء والمحاسبة الكاملة — وخطة تغذية مخصصة مشمولة كميزة إضافية، أينما كنت.',
         },
-        features: {
-          en: ['Custom workout plan', 'Weekly check-ins', 'Video form reviews', 'WhatsApp support'],
-          ar: ['خطة تمرين مخصصة', 'متابعة أسبوعية', 'مراجعة فيديو الأداء', 'دعم واتساب'],
-        },
+        features: [
+          { icon: 'Dumbbell',      en: 'Custom workout plan',   ar: 'خطة تمرين مخصصة' },
+          { icon: 'CalendarCheck', en: 'Weekly check-ins',      ar: 'متابعة أسبوعية' },
+          { icon: 'Video',         en: 'Video form reviews',    ar: 'مراجعة فيديو الأداء' },
+          { icon: 'MessageCircle', en: 'WhatsApp support',      ar: 'دعم واتساب' },
+          { icon: 'Salad', highlight: true, en: 'Custom nutrition plan — included with you', ar: 'خطة تغذية مخصصة — مشمولة معك' },
+        ],
         pricing: {
           monthly:   { price: 40000, billed: null,   savings: null },
           quarterly: { price: 32500, billed: 97500,  savings: 18   },
@@ -92,13 +95,16 @@ export const content = {
         interestId: 'inperson',
         title: { en: 'In-Person Training', ar: 'تدريب مباشر' },
         desc: {
-          en: 'Face-to-face sessions with full coaching support. Perfect for those who want hands-on guidance and real-time corrections.',
-          ar: 'جلسات وجهاً لوجه مع دعم تدريبي كامل. مثالي لمن يريد توجيهاً مباشراً وتصحيحاً فورياً.',
+          en: 'Face-to-face sessions with full coaching support. Perfect for those who want hands-on guidance and real-time corrections — and a custom nutrition plan is included as a benefit.',
+          ar: 'جلسات وجهاً لوجه مع دعم تدريبي كامل. مثالي لمن يريد توجيهاً مباشراً وتصحيحاً فورياً — وخطة تغذية مخصصة مشمولة كميزة إضافية.',
         },
-        features: {
-          en: ['1-on-1 sessions', 'Real-time corrections', 'Progress tracking', 'Flexible scheduling'],
-          ar: ['جلسات فردية', 'تصحيح فوري', 'متابعة التقدم', 'جدول مرن'],
-        },
+        features: [
+          { icon: 'User',       en: '1-on-1 sessions',         ar: 'جلسات فردية' },
+          { icon: 'Activity',   en: 'Real-time corrections',   ar: 'تصحيح فوري' },
+          { icon: 'TrendingUp', en: 'Progress tracking',       ar: 'متابعة التقدم' },
+          { icon: 'Clock',      en: 'Flexible scheduling',     ar: 'جدول مرن' },
+          { icon: 'Salad', highlight: true, en: 'Custom nutrition plan — included with you', ar: 'خطة تغذية مخصصة — مشمولة معك' },
+        ],
         pricing: {
           monthly:   { price: 75000, billed: null,   savings: null },
           quarterly: { price: 60000, billed: 180000, savings: 20   },
@@ -115,10 +121,12 @@ export const content = {
           en: 'Eat smarter, not less. Custom meal plans tailored to your goals, preferences, and lifestyle — no fad diets.',
           ar: 'كل بذكاء، لا بقلة. خطط غذائية مخصصة وفق أهدافك وتفضيلاتك وأسلوب حياتك — بلا حميات مبالغ فيها.',
         },
-        features: {
-          en: ['Custom meal plan', 'Macro breakdown', 'Weekly adjustments', 'Recipe suggestions'],
-          ar: ['خطة وجبات مخصصة', 'توزيع المغذيات', 'تعديلات أسبوعية', 'اقتراحات وصفات'],
-        },
+        features: [
+          { icon: 'Salad',     en: 'Custom meal plan',     ar: 'خطة وجبات مخصصة' },
+          { icon: 'PieChart',  en: 'Macro breakdown',      ar: 'توزيع المغذيات' },
+          { icon: 'RefreshCw', en: 'Weekly adjustments',   ar: 'تعديلات أسبوعية' },
+          { icon: 'BookOpen',  en: 'Recipe suggestions',   ar: 'اقتراحات وصفات' },
+        ],
         pricing: {
           monthly:   { price: 25000, billed: null,   savings: null },
           quarterly: { price: 20000, billed: 60000,  savings: 20   },
