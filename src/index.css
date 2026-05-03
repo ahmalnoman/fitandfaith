@@ -229,6 +229,25 @@ body[dir="rtl"] {
   }
 }
 
+/* ── Heading accent: shining gold gradient ── */
+.heading-shine {
+  background: linear-gradient(
+    90deg,
+    #C9A96E 0%,
+    #DEC08A 20%,
+    #fffbe6 50%,
+    #DEC08A 80%,
+    #C9A96E 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmerSweep 4.5s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(201, 169, 110, 0.4));
+}
+
 /* ── Claim Offer button (sexy + alive) ── */
 .claim-btn {
   position: relative;
@@ -387,7 +406,7 @@ body[dir="rtl"] {
           mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 .marquee-track {
-  animation: marqueeScroll 50s linear infinite;
+  animation: marqueeScroll 25s linear infinite;
   width: max-content;
 }
 @media (prefers-reduced-motion: reduce) {

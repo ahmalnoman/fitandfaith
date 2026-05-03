@@ -139,8 +139,10 @@ export const content = {
   },
 
   transformations: {
-    badge:   { en: 'Transformations',                   ar: 'التحولات' },
-    heading: { en: 'Real Clients. Real Results.',       ar: 'عملاء حقيقيون. نتائج حقيقية.' },
+    badge:         { en: 'Transformations',  ar: 'التحولات' },
+    heading:       { en: 'Real Clients. Real Results.', ar: 'عملاء حقيقيون. نتائج حقيقية.' },
+    headingPrefix: { en: 'Real Clients.',     ar: 'عملاء حقيقيون.' },
+    headingAccent: { en: 'Real Results.',     ar: 'نتائج حقيقية.' },
     sub: {
       en: 'Committed work, consistent coaching — the proof is in the progress.',
       ar: 'التزام حقيقي ومتابعة مستمرة — النتائج تتحدث عن نفسها.',

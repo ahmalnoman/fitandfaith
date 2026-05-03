@@ -112,14 +112,7 @@ export default function Hero() {
         >
           <span className="text-brand-white">{t.heading1[lang]}</span>
           <br />
-          <span
-            className="stat-glow"
-            style={{
-              background: 'linear-gradient(135deg, #C9A96E 30%, #E8D5A3 50%, #D0D0D0 70%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
+          <span className="heading-shine">
             {t.heading2[lang]}
           </span>
         </motion.h1>

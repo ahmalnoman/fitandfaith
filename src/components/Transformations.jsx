@@ -91,7 +91,8 @@ export default function Transformations() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-black text-brand-white mb-6 heading-line"
           >
-            {t.heading[lang]}
+            <span>{t.headingPrefix[lang]}</span>{' '}
+            <span className="heading-shine">{t.headingAccent[lang]}</span>
           </motion.h2>
 
           <motion.div
