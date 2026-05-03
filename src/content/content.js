@@ -162,6 +162,11 @@ export const content = {
         duration: { en: '14 days', ar: '١٤ يوماً' },
         images: ['abdumageed-1', 'abdumageed-2'],
       },
+      {
+        name: { en: 'Moaaz',      ar: 'معاذ'    },
+        duration: { en: '50 days', ar: '٥٠ يوماً' },
+        images: ['moaaz-front', 'moaaz-side'],
+      },
     ],
   },
 

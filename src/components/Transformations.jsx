@@ -9,6 +9,8 @@ import aseelFront from '../assets/transformations/aseel-front.jpeg';
 import aseelBack from '../assets/transformations/aseel-back.jpeg';
 import abdumageed1 from '../assets/transformations/abdumageed-1.jpeg';
 import abdumageed2 from '../assets/transformations/abdumageed-2.jpeg';
+import moaazFront from '../assets/transformations/moaaz-front.jpeg';
+import moaazSide from '../assets/transformations/moaaz-side.jpeg';
 
 const imageMap = {
   'moe': moe,
@@ -16,6 +18,8 @@ const imageMap = {
   'aseel-back': aseelBack,
   'abdumageed-1': abdumageed1,
   'abdumageed-2': abdumageed2,
+  'moaaz-front': moaazFront,
+  'moaaz-side': moaazSide,
 };
 
 function TransformationCard({ item, index, lang }) {
