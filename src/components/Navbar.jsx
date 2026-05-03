@@ -12,6 +12,7 @@ export default function Navbar() {
   const t = content.nav;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const handleNavClick = (key) => {
     if (location.pathname !== '/') {
@@ -31,6 +32,28 @@ export default function Navbar() {
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, []);
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection(null);
+      return;
+    }
+    const sectionIds = ['home', 'services', 'transformations', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveSection(visible[0].target.id);
+      },
+      { rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   return (
     <nav
@@ -60,23 +83,43 @@ export default function Navbar() {
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-8">
-          {['home', 'services', 'transformations', 'contact'].map((key) => (
-            <button
-              key={key}
-              onClick={() => handleNavClick(key)}
-              className="text-brand-muted hover:text-brand-white transition-colors duration-200 text-xs font-semibold tracking-widest uppercase relative group cursor-pointer"
-            >
-              {t[key][lang]}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold transition-all duration-300 group-hover:w-full" />
-            </button>
-          ))}
-          <button
-            onClick={() => navigate('/intake')}
-            className="text-brand-gold hover:text-brand-white transition-colors duration-200 text-xs font-semibold tracking-widest uppercase relative group cursor-pointer"
-          >
-            {t.intake[lang]}
-            <span className="absolute -bottom-1 left-0 w-full h-px bg-brand-gold transition-all duration-300 group-hover:bg-brand-white" />
-          </button>
+          {['home', 'services', 'transformations', 'contact'].map((key) => {
+            const isActive = activeSection === key;
+            return (
+              <button
+                key={key}
+                onClick={() => handleNavClick(key)}
+                className={`transition-colors duration-200 text-xs font-semibold tracking-widest uppercase relative group cursor-pointer ${
+                  isActive ? 'text-brand-gold' : 'text-brand-muted hover:text-brand-white'
+                }`}
+              >
+                {t[key][lang]}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-brand-gold transition-all duration-300 ${
+                    isActive ? 'w-full shadow-[0_0_8px_rgba(201,169,110,0.7)]' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </button>
+            );
+          })}
+          {(() => {
+            const isActive = location.pathname === '/intake';
+            return (
+              <button
+                onClick={() => navigate('/intake')}
+                className={`transition-colors duration-200 text-xs font-semibold tracking-widest uppercase relative group cursor-pointer ${
+                  isActive ? 'text-brand-gold' : 'text-brand-muted hover:text-brand-white'
+                }`}
+              >
+                {t.intake[lang]}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-brand-gold transition-all duration-300 ${
+                    isActive ? 'w-full shadow-[0_0_8px_rgba(201,169,110,0.7)]' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </button>
+            );
+          })()}
         </div>
 
         {/* Right controls */}
@@ -120,21 +163,43 @@ export default function Navbar() {
             borderTop: '1px solid rgba(201,169,110,0.1)',
           }}
         >
-          {['home', 'services', 'transformations', 'contact'].map((key) => (
-            <button
-              key={key}
-              onClick={() => { setMenuOpen(false); handleNavClick(key); }}
-              className="text-brand-light text-base font-medium tracking-wide hover:text-brand-gold transition-colors text-left cursor-pointer"
-            >
-              {t[key][lang]}
-            </button>
-          ))}
-          <button
-            onClick={() => { setMenuOpen(false); navigate('/intake'); }}
-            className="text-brand-gold text-base font-bold tracking-wide hover:text-brand-white transition-colors text-left cursor-pointer"
-          >
-            {t.intake[lang]}
-          </button>
+          {['home', 'services', 'transformations', 'contact'].map((key) => {
+            const isActive = activeSection === key;
+            return (
+              <button
+                key={key}
+                onClick={() => { setMenuOpen(false); handleNavClick(key); }}
+                className={`text-base font-medium tracking-wide transition-colors text-left cursor-pointer flex items-center gap-3 ${
+                  isActive ? 'text-brand-gold' : 'text-brand-light hover:text-brand-gold'
+                }`}
+              >
+                <span
+                  className={`h-px bg-brand-gold transition-all duration-300 ${
+                    isActive ? 'w-6 shadow-[0_0_8px_rgba(201,169,110,0.7)]' : 'w-0'
+                  }`}
+                />
+                {t[key][lang]}
+              </button>
+            );
+          })}
+          {(() => {
+            const isActive = location.pathname === '/intake';
+            return (
+              <button
+                onClick={() => { setMenuOpen(false); navigate('/intake'); }}
+                className={`text-base font-medium tracking-wide transition-colors text-left cursor-pointer flex items-center gap-3 ${
+                  isActive ? 'text-brand-gold' : 'text-brand-light hover:text-brand-gold'
+                }`}
+              >
+                <span
+                  className={`h-px bg-brand-gold transition-all duration-300 ${
+                    isActive ? 'w-6 shadow-[0_0_8px_rgba(201,169,110,0.7)]' : 'w-0'
+                  }`}
+                />
+                {t.intake[lang]}
+              </button>
+            );
+          })()}
           <button onClick={toggle} className="text-brand-gold font-semibold text-left mt-1 text-sm">
             {t.toggleLang[lang]}
           </button>

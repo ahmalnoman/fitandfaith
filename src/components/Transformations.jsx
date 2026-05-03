@@ -1,6 +1,5 @@
 // src/components/Transformations.jsx
 import { motion } from 'framer-motion';
-import { Clock } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 import { content } from '../content/content';
 
@@ -63,9 +62,9 @@ function TransformationCard({ item, index, lang }) {
         <h3 className="text-2xl font-black text-brand-white tracking-tight">
           {item.name[lang]}
         </h3>
-        <div className="inline-flex items-center gap-1.5 bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
-          <Clock className="w-3 h-3" />
-          {item.duration[lang]}
+        <div className="duration-badge">
+          <span className="duration-badge-dot" />
+          <span className="duration-badge-text">{item.duration[lang]}</span>
         </div>
       </div>
     </motion.div>
@@ -86,25 +85,25 @@ export default function Transformations() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6"
-          >
-            <span className="w-1 h-1 rounded-full bg-brand-gold" />
-            {t.badge[lang]}
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.05 }}
-            className="text-4xl md:text-6xl font-black text-brand-white mb-5 heading-line"
+            className="text-4xl md:text-6xl font-black text-brand-white mb-6 heading-line"
           >
             {t.heading[lang]}
           </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05 }}
+            className="flex w-fit mx-auto items-center gap-2 border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5"
+          >
+            <span className="w-1 h-1 rounded-full bg-brand-gold" />
+            {t.badge[lang]}
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -117,10 +116,18 @@ export default function Transformations() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {t.items.map((item, i) => (
-            <TransformationCard key={item.name.en} item={item} index={i} lang={lang} />
-          ))}
+        <div className="marquee-viewport relative overflow-hidden">
+          <div className="marquee-track flex gap-6">
+            {[...t.items, ...t.items].map((item, i) => (
+              <div
+                key={`${item.name.en}-${i}`}
+                aria-hidden={i >= t.items.length}
+                className="w-[280px] md:w-[340px] flex-shrink-0"
+              >
+                <TransformationCard item={item} index={0} lang={lang} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

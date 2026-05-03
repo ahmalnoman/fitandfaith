@@ -33,7 +33,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-28 md:pt-32 pb-16 overflow-hidden"
     >
       {/* ── Fullscreen video background ── */}
       <div className="absolute inset-0">
@@ -162,9 +162,8 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
       >
-        <span className="text-brand-muted text-[10px] tracking-widest uppercase">{lang === 'ar' ? 'مرر للأسفل' : 'scroll'}</span>
         <span className="block w-px h-10 bg-gradient-to-b from-brand-muted/60 to-transparent" />
       </motion.div>
     </section>

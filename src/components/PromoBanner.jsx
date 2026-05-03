@@ -45,9 +45,10 @@ export default function PromoBanner() {
         </span>
         <button
           onClick={scrollToPricing}
-          className="hidden md:inline-block bg-brand-bg/90 text-brand-gold px-3 py-1 rounded-full font-bold hover:bg-brand-bg transition cursor-pointer"
+          className="claim-btn hidden md:inline-flex items-center gap-1.5 bg-brand-bg text-brand-gold px-4 py-1.5 rounded-full font-black uppercase tracking-wider text-[11px] cursor-pointer"
         >
-          {promo.claim[lang]} →
+          <span className="claim-btn-text">{promo.claim[lang]}</span>
+          <span className="claim-btn-arrow">→</span>
         </button>
       </div>
       <button

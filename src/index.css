@@ -229,6 +229,171 @@ body[dir="rtl"] {
   }
 }
 
+/* ── Claim Offer button (sexy + alive) ── */
+.claim-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 220, 150, 0.45),
+    0 0 18px rgba(255, 215, 130, 0.45),
+    inset 0 1px 0 rgba(255, 251, 230, 0.18);
+  animation: claimPulse 2.4s ease-in-out infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.claim-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 240, 200, 0.55) 50%,
+    transparent 70%
+  );
+  transform: translateX(-110%);
+  animation: claimSweep 2.8s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+.claim-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 240, 200, 0.7);
+  animation: claimRipple 1.8s ease-out infinite;
+  pointer-events: none;
+}
+.claim-btn:hover {
+  transform: scale(1.07);
+  box-shadow:
+    0 0 0 1px rgba(255, 240, 200, 0.8),
+    0 0 28px rgba(255, 215, 130, 0.85),
+    inset 0 1px 0 rgba(255, 251, 230, 0.25);
+}
+.claim-btn-text {
+  background: linear-gradient(90deg, #C9A96E 0%, #DEC08A 35%, #fffbe6 50%, #DEC08A 65%, #C9A96E 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerSweep 3s linear infinite;
+}
+.claim-btn-arrow {
+  display: inline-block;
+  animation: claimArrowNudge 1.3s ease-in-out infinite;
+  font-weight: 900;
+}
+@keyframes claimPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.045); }
+}
+@keyframes claimSweep {
+  0%        { transform: translateX(-110%); }
+  60%, 100% { transform: translateX(110%); }
+}
+@keyframes claimRipple {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  100% { transform: scale(1.45); opacity: 0;   }
+}
+@keyframes claimArrowNudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(4px); }
+}
+
+/* ── Transformation duration badge (fancy pill) ── */
+.duration-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  background:
+    linear-gradient(135deg, rgba(201,169,110,0.18) 0%, rgba(222,192,138,0.04) 60%, rgba(201,169,110,0.14) 100%);
+  border: 1px solid rgba(201,169,110,0.45);
+  box-shadow:
+    0 0 22px rgba(201,169,110,0.18),
+    inset 0 1px 0 rgba(255,251,230,0.08);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  overflow: hidden;
+  isolation: isolate;
+}
+.duration-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255,251,230,0.22) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: badgeSweep 4.2s ease-in-out infinite;
+  z-index: -1;
+}
+@keyframes badgeSweep {
+  0%, 60% { transform: translateX(-120%); }
+  85%, 100% { transform: translateX(120%); }
+}
+.duration-badge-text {
+  background: linear-gradient(90deg, #C9A96E 0%, #DEC08A 35%, #fffbe6 50%, #DEC08A 65%, #C9A96E 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerSweep 3.5s linear infinite;
+}
+.duration-badge-dot {
+  position: relative;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: #DEC08A;
+  box-shadow: 0 0 10px rgba(222,192,138,0.95), 0 0 4px rgba(255,251,230,0.7);
+}
+.duration-badge-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 1px solid rgba(222,192,138,0.6);
+  animation: dotPing 2.2s ease-out infinite;
+}
+@keyframes dotPing {
+  0%   { transform: scale(0.6); opacity: 1; }
+  80%  { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ── Transformations marquee ── */
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+/* Force LTR so the duplicate set is always on the right —
+   keeps the loop seamless when the page is in Arabic (RTL). */
+.marquee-viewport,
+.marquee-track {
+  direction: ltr;
+}
+.marquee-viewport {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+.marquee-track {
+  animation: marqueeScroll 50s linear infinite;
+  width: max-content;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
 /* ── Hero video scanlines (futuristic overlay) ── */
 .hero-scanlines {
   background: repeating-linear-gradient(

@@ -18,25 +18,26 @@ export default function Services() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black text-brand-white mb-6 heading-line"
+          >
+            {t.heading[lang]}
+          </motion.h2>
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6"
+            transition={{ delay: 0.05 }}
+            className="flex w-fit mx-auto items-center gap-2 border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5"
           >
             <span className="w-1 h-1 rounded-full bg-brand-gold" />
             {lang === 'ar' ? 'البرامج' : 'Programs'}
           </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.05 }}
-            className="text-4xl md:text-6xl font-black text-brand-white mb-5 heading-line"
-          >
-            {t.heading[lang]}
-          </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
