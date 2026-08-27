@@ -316,6 +316,78 @@ export const content = {
     },
     startCta: { en: 'Start Intake Form',           ar: 'ابدأ استبيان العميل' },
     optional: { en: '(optional)',                  ar: '(اختياري)' },
+    continue: { en: 'Continue to Food Preferences', ar: 'المتابعة إلى تفضيلات الطعام' },
+    back:     { en: 'Back',                         ar: 'رجوع' },
+    step1of2: { en: 'Step 1 of 2',                  ar: 'الخطوة 1 من 2' },
+    step2of2: { en: 'Step 2 of 2',                  ar: 'الخطوة 2 من 2' },
+  },
+
+  foodPrefs: {
+    badge:   { en: 'Food Preferences',          ar: 'تفضيلات الطعام' },
+    heading: { en: 'What do you like to eat?',   ar: 'ما الأطعمة التي تفضلها؟' },
+    sub: {
+      en: 'Pick the foods you enjoy from each category. Select as many as you like — this helps us build a meal plan you\'ll actually stick to.',
+      ar: 'اختر الأطعمة التي تحبها من كل مجموعة. يمكنك اختيار ما تشاء — هذا يساعدنا على تصميم خطة غذائية تلتزم بها فعلاً.',
+    },
+    otherLabel:       { en: 'Other',                          ar: 'أخرى' },
+    otherPlaceholder: { en: 'Add other foods, comma separated', ar: 'أضف أطعمة أخرى، افصل بينها بفاصلة' },
+    selectHint: {
+      en: 'Choose at least one from each category (or add your own under “Other”).',
+      ar: 'اختر عنصراً واحداً على الأقل من كل مجموعة (أو أضف اختيارك تحت "أخرى").',
+    },
+    validationCategory: {
+      en: 'Please pick at least one option or add it under “Other”.',
+      ar: 'يرجى اختيار عنصر واحد على الأقل أو إضافته تحت "أخرى".',
+    },
+    // WhatsApp message headings
+    waTitle:   { en: 'FOOD PREFERENCES',  ar: 'تفضيلات الطعام' },
+    waOther:   { en: 'Other',             ar: 'أخرى' },
+    categories: [
+      {
+        id: 'protein',
+        title: { en: 'Protein',       ar: 'البروتين' },
+        options: [
+          { id: 'chicken',     en: 'Chicken',      ar: 'دجاج' },
+          { id: 'beef',        en: 'Beef',         ar: 'لحم بقري' },
+          { id: 'lamb',        en: 'Lamb',         ar: 'لحم غنم' },
+          { id: 'fish',        en: 'Fish',         ar: 'سمك' },
+          { id: 'tuna',        en: 'Tuna',         ar: 'تونة' },
+          { id: 'eggs',        en: 'Eggs',         ar: 'بيض' },
+          { id: 'greekYogurt', en: 'Greek Yogurt', ar: 'زبادي يوناني' },
+          { id: 'cheese',      en: 'Cheese',       ar: 'جبن' },
+          { id: 'lentils',     en: 'Lentils',      ar: 'عدس' },
+          { id: 'chickpeas',   en: 'Chickpeas',    ar: 'حمص' },
+          { id: 'beans',       en: 'Beans',        ar: 'فاصوليا' },
+        ],
+      },
+      {
+        id: 'carbs',
+        title: { en: 'Carbohydrates', ar: 'الكربوهيدرات' },
+        options: [
+          { id: 'rice',         en: 'Rice',          ar: 'أرز' },
+          { id: 'potatoes',     en: 'Potatoes',      ar: 'بطاطس' },
+          { id: 'sweetPotato',  en: 'Sweet Potatoes', ar: 'بطاطا حلوة' },
+          { id: 'oats',         en: 'Oats',          ar: 'شوفان' },
+          { id: 'bread',        en: 'Bread',         ar: 'خبز' },
+          { id: 'pasta',        en: 'Pasta',         ar: 'معكرونة' },
+          { id: 'bulgur',       en: 'Bulgur',        ar: 'برغل' },
+          { id: 'quinoa',       en: 'Quinoa',        ar: 'كينوا' },
+          { id: 'fruits',       en: 'Fruits',        ar: 'فواكه' },
+        ],
+      },
+      {
+        id: 'fats',
+        title: { en: 'Fats',          ar: 'الدهون' },
+        options: [
+          { id: 'oliveOil',     en: 'Olive Oil',     ar: 'زيت الزيتون' },
+          { id: 'avocado',      en: 'Avocado',       ar: 'أفوكادو' },
+          { id: 'nuts',         en: 'Nuts',          ar: 'مكسرات' },
+          { id: 'peanutButter', en: 'Peanut Butter', ar: 'زبدة الفول السوداني' },
+          { id: 'tahini',       en: 'Tahini',        ar: 'طحينة' },
+          { id: 'seeds',        en: 'Seeds',         ar: 'بذور' },
+        ],
+      },
+    ],
   },
 
   footer: {

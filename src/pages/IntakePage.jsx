@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Send, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Send, ShieldCheck, ArrowRight } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 import { content } from '../content/content';
+import FoodPreferences from '../components/FoodPreferences';
 
 const WHATSAPP_NUMBER = '967773031599';
 
@@ -120,8 +121,73 @@ export default function IntakePage() {
 
   const set = (k) => (v) => setForm((f) => ({ ...f, [k]: v }));
 
-  const handleSubmit = (e) => {
+  // ── Two-step flow ──
+  const [step, setStep] = useState(1);
+
+  // ── Food-preferences state (owned here, structured separately from `form`) ──
+  const [food, setFood] = useState({
+    protein: [],
+    carbs: [],
+    fats: [],
+    proteinOther: '',
+    carbsOther: '',
+    fatsOther: '',
+  });
+  const [foodErrors, setFoodErrors] = useState({});
+
+  const clearFoodError = (catId) =>
+    setFoodErrors((e) => {
+      if (!e[catId]) return e;
+      const next = { ...e };
+      delete next[catId];
+      return next;
+    });
+
+  const toggleFood = (catId, optId) => {
+    setFood((f) => {
+      const list = f[catId] || [];
+      const next = list.includes(optId)
+        ? list.filter((id) => id !== optId)
+        : [...list, optId];
+      return { ...f, [catId]: next };
+    });
+    clearFoodError(catId);
+  };
+
+  const setFoodOther = (catId, value) => {
+    setFood((f) => ({ ...f, [`${catId}Other`]: value }));
+    if (value.trim() !== '') clearFoodError(catId);
+  };
+
+  // Step 1 → Step 2. Native `required` validation on the form gates this handler,
+  // so required questionnaire fields cannot be bypassed.
+  const handleContinue = (e) => {
     e.preventDefault();
+    setStep(2);
+    window.scrollTo(0, 0);
+  };
+
+  const goBack = () => {
+    setStep(1);
+    window.scrollTo(0, 0);
+  };
+
+  const validateFood = () => {
+    const errs = {};
+    content.foodPrefs.categories.forEach((cat) => {
+      const hasSelection = (food[cat.id] || []).length > 0;
+      const hasOther = (food[`${cat.id}Other`] || '').trim() !== '';
+      if (!hasSelection && !hasOther) errs[cat.id] = true;
+    });
+    setFoodErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleSend = () => {
+    if (!validateFood()) {
+      window.scrollTo(0, 0);
+      return;
+    }
 
     const goalLabel = t.goals.find((g) => g.id === form.goal)?.[lang] || form.goal;
     const levelLabel = t.levels.find((l) => l.id === form.level)?.[lang] || form.level;
@@ -172,7 +238,22 @@ export default function IntakePage() {
           ]),
     ];
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+    // ── Food preferences section (IDs resolved to visible localized labels) ──
+    const fp = content.foodPrefs;
+    const sep = isAr ? '، ' : ', ';
+    const foodLines = ['', `*${fp.waTitle[lang]}*`];
+    fp.categories.forEach((cat) => {
+      const names = (food[cat.id] || [])
+        .map((id) => cat.options.find((o) => o.id === id)?.[lang])
+        .filter(Boolean);
+      const otherVal = (food[`${cat.id}Other`] || '').trim();
+      foodLines.push('', `*${cat.title[lang]}:*`);
+      if (names.length) foodLines.push(names.join(sep));
+      if (otherVal) foodLines.push(`*${fp.waOther[lang]}:* ${otherVal}`);
+    });
+
+    const allLines = [...lines, ...foodLines];
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(allLines.join('\n'))}`;
     window.open(url, '_blank');
   };
 
@@ -192,15 +273,25 @@ export default function IntakePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">
-            <span className="w-1 h-1 rounded-full bg-brand-gold" />
-            {t.badge[lang]}
+          <div className="flex items-center gap-3 mb-5 flex-wrap">
+            <div className="inline-flex items-center gap-2 border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full">
+              <span className="w-1 h-1 rounded-full bg-brand-gold" />
+              {step === 1 ? t.badge[lang] : content.foodPrefs.badge[lang]}
+            </div>
+            <span className="text-brand-muted text-[11px] font-semibold tracking-wider uppercase">
+              {step === 1 ? t.step1of2[lang] : t.step2of2[lang]}
+            </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-brand-white mb-4">{t.heading[lang]}</h1>
-          <p className="text-brand-muted text-base leading-relaxed mb-10 max-w-2xl">{t.sub[lang]}</p>
+          <h1 className="text-4xl md:text-5xl font-black text-brand-white mb-4">
+            {step === 1 ? t.heading[lang] : content.foodPrefs.heading[lang]}
+          </h1>
+          <p className="text-brand-muted text-base leading-relaxed mb-10 max-w-2xl">
+            {step === 1 ? t.sub[lang] : content.foodPrefs.sub[lang]}
+          </p>
 
+          {step === 1 && (
           <form
-            onSubmit={handleSubmit}
+            onSubmit={handleContinue}
             className="rounded-2xl p-6 md:p-10 space-y-8"
             style={{
               background: 'linear-gradient(135deg, rgba(20,18,15,0.95) 0%, rgba(10,10,10,0.95) 100%)',
@@ -355,18 +446,14 @@ export default function IntakePage() {
               )}
             </div>
 
-            {/* Submit */}
+            {/* Continue to Step 2 */}
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-3 text-white font-bold px-8 py-4 rounded-full text-sm transition-all duration-300 hover:scale-[1.01] cursor-pointer"
-                style={{
-                  background: 'linear-gradient(135deg, #1abe5a, #25D366)',
-                  boxShadow: '0 8px 40px rgba(37,211,102,0.25)',
-                }}
+                className="btn-shimmer w-full flex items-center justify-center gap-3 text-brand-bg font-bold px-8 py-4 rounded-full text-sm transition-all duration-300 hover:scale-[1.01] cursor-pointer shadow-lg hover:shadow-yellow-700/40"
               >
-                <Send className="w-4 h-4" />
-                {t.submit[lang]}
+                {t.continue[lang]}
+                <ArrowRight className={`w-4 h-4 ${isAr ? 'rotate-180' : ''}`} />
               </button>
               <p className="text-brand-muted text-xs mt-4 flex items-center gap-2 justify-center">
                 <ShieldCheck className="w-3.5 h-3.5 text-brand-gold/70" />
@@ -374,6 +461,61 @@ export default function IntakePage() {
               </p>
             </div>
           </form>
+          )}
+
+          {step === 2 && (
+            <div
+              className="rounded-2xl p-6 md:p-10"
+              style={{
+                background: 'linear-gradient(135deg, rgba(20,18,15,0.95) 0%, rgba(10,10,10,0.95) 100%)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                boxShadow: '0 8px 60px rgba(0,0,0,0.5)',
+              }}
+            >
+              <FoodPreferences
+                lang={lang}
+                isAr={isAr}
+                selections={{ protein: food.protein, carbs: food.carbs, fats: food.fats }}
+                others={{
+                  proteinOther: food.proteinOther,
+                  carbsOther: food.carbsOther,
+                  fatsOther: food.fatsOther,
+                }}
+                errors={foodErrors}
+                onToggle={toggleFood}
+                onOtherChange={setFoodOther}
+              />
+
+              {/* Actions */}
+              <div className="pt-8 mt-8 border-t border-white/5 flex flex-col sm:flex-row-reverse gap-3">
+                <button
+                  type="button"
+                  onClick={handleSend}
+                  className="flex-1 flex items-center justify-center gap-3 text-white font-bold px-8 py-4 rounded-full text-sm transition-all duration-300 hover:scale-[1.01] cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, #1abe5a, #25D366)',
+                    boxShadow: '0 8px 40px rgba(37,211,102,0.25)',
+                  }}
+                >
+                  <Send className="w-4 h-4" />
+                  {t.submit[lang]}
+                </button>
+                <button
+                  type="button"
+                  onClick={goBack}
+                  className="sm:flex-none flex items-center justify-center gap-2 text-brand-light border border-[#2a2a2a] hover:border-brand-gold/50 hover:text-brand-gold font-semibold px-8 py-4 rounded-full text-sm transition-all duration-300 cursor-pointer"
+                >
+                  <ArrowLeft className={`w-4 h-4 ${isAr ? 'rotate-180' : ''}`} />
+                  {t.back[lang]}
+                </button>
+              </div>
+
+              <p className="text-brand-muted text-xs mt-4 flex items-center gap-2 justify-center">
+                <ShieldCheck className="w-3.5 h-3.5 text-brand-gold/70" />
+                {t.disclaimer[lang]}
+              </p>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
