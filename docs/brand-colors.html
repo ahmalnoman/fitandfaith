@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIT &amp; FAITH — Brand Colors</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 24px;
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, sans-serif;
+    background: #f4f4f5; color: #18181b;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0c0c0d; color: #f4f4f5; }
+    .card { background: #161618 !important; }
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 8px; }
+  h1 { font-size: 26px; letter-spacing: .12em; margin: 0 0 4px; }
+  h1 .amp { color: #BE9F62; }
+  .sub { opacity: .6; font-size: 13px; margin: 0 0 36px; text-align: center; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .18em;
+       opacity: .7; margin: 32px 0 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+          gap: 14px; }
+  .card { background: #fff; border-radius: 12px; overflow: hidden;
+          box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .chip { height: 96px; }
+  .meta { padding: 10px 12px; }
+  .name { font-size: 13px; font-weight: 600; }
+  .hex { font-size: 12px; opacity: .7; font-family: ui-monospace, Menlo, monospace;
+         letter-spacing: .04em; margin-top: 2px; }
+  .note { font-size: 11px; opacity: .55; margin-top: 3px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>FIT <span class="amp">&amp;</span> FAITH</h1>
+  </header>
+  <p class="sub">Brand color identity · design by Two Souls</p>
+
+  <h2>Gold / Bronze — warm</h2>
+  <div class="grid" id="gold"></div>
+
+  <h2>Silver / Slate — cool</h2>
+  <div class="grid" id="silver"></div>
+</div>
+<script>
+  const gold = [
+    ['Gold Light', '#DABE76', 'Highlights / hover'],
+    ['Gold',       '#BE9F62', 'Primary accent'],
+    ['Gold Deep',  '#B09159', 'Buttons / active'],
+    ['Bronze',     '#8D724A', 'Secondary warm'],
+    ['Taupe',      '#645649', 'Warm dark neutral'],
+    ['Charcoal',   '#4F4B4F', 'Deep warm text'],
+  ];
+  const silver = [
+    ['Off White',  '#F9F9F9', 'Background / white'],
+    ['Light Grey', '#E9EAEC', 'Surfaces / cards'],
+    ['Grey',       '#BCBCBC', 'Muted / dividers'],
+    ['Steel',      '#858C98', 'Cool mid neutral'],
+    ['Slate',      '#798290', 'Secondary cool'],
+    ['Slate Dark', '#48505A', 'Deep cool text'],
+  ];
+  const light = h => {
+    const n = parseInt(h.slice(1),16);
+    return (0.299*(n>>16) + 0.587*((n>>8)&255) + 0.114*(n&255)) > 150;
+  };
+  const render = (id, arr) => {
+    document.getElementById(id).innerHTML = arr.map(([name,hex,note]) => `
+      <div class="card">
+        <div class="chip" style="background:${hex}"></div>
+        <div class="meta">
+          <div class="name">${name}</div>
+          <div class="hex">${hex}</div>
+          <div class="note">${note}</div>
+        </div>
+      </div>`).join('');
+  };
+  render('gold', gold);
+  render('silver', silver);
+</script>
+</body>
+</html>
